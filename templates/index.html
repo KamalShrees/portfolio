@@ -1,0 +1,558 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Kamal Shrees</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+    <!-- =======================================================
+  * Template Name: Personal - v4.7.0
+  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header">
+        <div class="container">
+            {% for about in show_about %}
+            <h1><a href=" ">{{about.fullname}}</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
+            <h2>I'm a passionate <span>Web Developer</span> from {{about.address}}</h2>
+            {% endfor %}
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link active" href="#header">Home</a></li>
+                    <li><a class="nav-link" href="#about">About</a></li>
+                    <li><a class="nav-link" href="#resume">Resume</a></li>
+                    <li><a class="nav-link" href="#services">Services</a></li>
+                    <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav>
+            <!-- .navbar -->
+            
+            <div class="social-links">
+                {% for social in show_social %}
+                {% if social.show %}
+                <a href="{{social.link}}" class="twitter"> <img src="{{social.icon.url}}"> </a>
+                {% endif %}
+                {% endfor %}
+            </div>
+            
+
+        </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+
+        <!-- ======= About Me ======= -->
+        <div class="about-me container">
+
+            <div class="section-title">
+                <h2>About</h2>
+                <p>Learn more about me</p>
+            </div>
+            {% for about in show_about %}
+            <div class="row">
+                <div class="col-lg-4" data-aos="fade-right">
+                    <img src="{{about.image.url}}" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+                    <h3>Web Developer / Web Designer</h3>
+                    <p class="fst-italic">
+                        My details information are given as below.
+                    </p>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Name:</strong> <span>{{about.fullname}}</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>{{about.phone}}</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>{{about.address}}</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bachelor</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>{{about.email}}</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p>
+                        {{about.description}}
+                    </p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <!-- End About Me -->
+
+        <!-- ======= Counts ======= -->
+        <div class="counts container">
+            {% for status in show_status%}
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="count-box">
+                        <i class="bi bi-emoji-smile"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="{{status.happy_client_no}}" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
+                    <div class="count-box">
+                        <i class="bi bi-journal-richtext"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="{{c}}" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Projects</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="bi bi-headset"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="{{status.support_hour}}" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Hours Of Support</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="bi bi-award"></i>
+                        <span data-purecounter-start="0" data-purecounter-end="{{status.award_no}}" data-purecounter-duration="1" class="purecounter"></span>
+                        <p>Awards</p>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+        <!-- End Counts -->
+
+        <!-- ======= Skills  ======= -->
+        <div class="skills container">
+
+            <div class="section-title">
+                <h2>Skills</h2>
+            </div>
+
+            <div class="row skills-content">
+                {% for skill in show_skill %}
+                <div class="col-lg-6">
+                    {% if skill.show %}
+
+                    <div class="progress">
+                        <span class="skill">{{skill.skill_name}} <i class="val">{{skill.percentage}}</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="{{skill.percentage}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+        <!-- End Skills -->
+
+        <!-- ======= Interests ======= -->
+        <div class="interests container">
+
+            <div class="section-title">
+                <h2>Interests</h2>
+            </div>
+
+            <div class="row">
+                {%for intrest in show_intrest %}
+                <div class="col-lg-3 col-md-4 mt-4">
+                    <div class="icon-box">
+                        <i><img src="{{intrest.icon.url}}"></i>
+                        <h3>{{intrest.name}}</h3>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <!-- End Interests -->
+
+        <!-- ======= Testimonials ======= -->
+        <div class="testimonials container">
+
+            <div class="section-title">
+                <h2>Testimonials</h2>
+            </div>
+
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+                <div class="swiper-wrapper">
+                    {% for testimonial in show_testi %}
+                    <div class="swiper-slide">
+                        {% if testimonial.show %}
+                        <div class="testimonial-item">
+                            <p>
+                             
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i> {{testimonial.description|truncatechars:200 }}
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                                
+                            </p>
+                            <img src="{{testimonial.image.url}}" class="testimonial-img" alt="">
+                            <h3>{{testimonial.name}}</h3>
+                            <h4>{{testimonial.post}}</h4>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <!-- End testimonial item -->
+                    {% endfor %}
+
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="owl-carousel testimonials-carousel">
+
+            </div>
+
+        </div>
+        <!-- End Testimonials  -->
+
+    </section>
+    <!-- End About Section -->
+
+    <!-- ======= Resume Section ======= -->
+    <section id="resume" class="resume">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Resume</h2>
+                <p>Check My Resume</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3 class="resume-title">Sumary</h3>
+                    {% for about in show_about%}
+                    <div class="resume-item pb-0">
+                        <h4>{{about.fullname}}</h4>
+                        <p><em>{{about.description}}</em></p>
+                        <p>
+                            <ul>
+                                <li>{{about.address}}</li>
+                                <li>{{about.phone}}</li>
+                                <li>{{about.email}}</li>
+                            </ul>
+                        </p>
+                    </div>
+                    {% endfor%}
+
+                    <h3 class="resume-title">Education</h3>
+                    {% for edu in show_education %}
+                    {% if edu.show %}
+                    <div class="resume-item">
+                        <h4>{{edu.institution_name}}</h4>
+                        <p>{{edu.start_year}} | {{edu.end_year}}</p>
+                        <p><em>{{edu.level}}</em></p>
+                    </div>
+                    {% endif %}
+                    {% endfor%}
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="resume-title">Professional Experience</h3>
+                    {% for exp in show_experience %}
+                    {% if exp.show %}
+                    <div class="resume-item">
+                        <h4>{{exp.experience_name}}</h4>
+                        <p><em>{{exp.platform}} </em></p>
+                        <p><em>{{exp.start_year}} | {{exp.end_year}} </em></p>
+                        <p><em>{{exp.responsiblity}} </em></p>
+                    </div>
+                    {% endif %}
+                    {%endfor%}
+
+                    <h3 class="resume-title">Download Resume</h3>
+                    {% for abt in show_about %}
+                    <div class="resume-item">
+                        <h4><em><a href="{{abt.cv_upload.url}}" target="_blank">Download Now <i class="bx bx-download"></i></a> </em></h4>
+                    </div>
+                    {% endfor%}
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End Resume Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Services</h2>
+                <p>My Services</p>
+            </div>
+
+            <div class="row">
+                {% for service in show_service %}
+                {% if service.show %}
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" style="margin-bottom: 10px;">
+                    <div class="icon-box">
+                        <div class="icon"><img src="{{service.icon.url}}" alt="" style="width:100%"></div>
+                        <h4><a href="">{{service.name}}</a></h4>
+                        <p>{{service.description|truncatechars:200}}</p>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+    <!-- End Services Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Portfolio</h2>
+                <p>My Works</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">All</li>
+                        <li data-filter=".filter-design">Design</li>
+                        <li data-filter=".filter-php">PHP</li>
+                        <li data-filter=".filter-python">Python</li>
+                        <li data-filter=".filter-wordpress">Wordpress</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row portfolio-container">
+                {% for port in show_portfolio %}
+                {% if port.show %}
+                {% if port.category == 'Design' %}
+                  <div class="col-lg-4 col-md-6 portfolio-item filter-design">
+                    <div class="portfolio-wrap">
+                        <img src="{{port.image.url}}" class="img-fluid" alt="" style="width:100%; height:200px;">
+                        <div class="portfolio-info">
+                            <h4>{{port.name}}</h4>
+                            <p>{{port.category}}</p>
+                            <div class="portfolio-links">
+                                <a href="{{port.image.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{port.name}}"><i class="bx bx-plus"></i></a>
+                                <a href="{% url 'myprofile:portfolio_details' port.id %}"><i class="bx bx-link"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                  {% elif port.category == 'PHP' %}
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-php">
+                        <div class="portfolio-wrap">
+                            <img src="{{port.image.url}}" class="img-fluid" alt="" style="width:100%; height:200px;">
+                            <div class="portfolio-info">
+                                <h4>{{port.name}}</h4>
+                                <p>{{port.category}}</p>
+                                <div class="portfolio-links">
+                                    <a href="{{port.image.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{port.name}}"><i class="bx bx-plus"></i></a>
+                                   
+                                    <a href="{% url 'myprofile:portfolio_details' port.id %}" ><i class="bx bx-link"></i></a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elif port.category == 'Python' %}
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-python">
+                        <div class="portfolio-wrap">
+                            <img src="{{port.image.url}}" class="img-fluid" alt="" style="width:100%; height:200px;">
+                            <div class="portfolio-info">
+                                <h4>{{port.name}}</h4>
+                                <p>{{port.category}}</p>
+                                <div class="portfolio-links">
+                                    <a href="{{port.image.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{port.name}}"><i class="bx bx-plus"></i></a>
+                                    <a href="{% url 'myprofile:portfolio_details' port.id %}"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elif port.category == 'Wordpress' %}
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+                        <div class="portfolio-wrap">
+                            <img src="{{port.image.url}}" class="img-fluid" alt="" style="width:100%; height:200px;">
+                            <div class="portfolio-info">
+                                <h4>{{port.name}}</h4>
+                                <p>{{port.category}}</p>
+                                <div class="portfolio-links">
+                                    <a href="{{port.image.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{port.name}}"><i class="bx bx-plus"></i></a>
+                                    <a href="{% url 'myprofile:portfolio_details' port.id %}" ><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-lg-4 col-md-6 portfolio-item">
+                        <div class="portfolio-wrap">
+                            <img src="{{port.image.url}}" class="img-fluid" alt="" style="width:100%; height:200px;">
+                            <div class="portfolio-info">
+                                <h4>{{port.name}}</h4>
+                                <p>{{port.category}}</p>
+                                <div class="portfolio-links">
+                                    <a href="{{port.image.url}}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{port.name}}"><i class="bx bx-plus"></i></a>
+                                    <a href="{% url 'myprofile:portfolio_details' port.id %}"><i class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 {% endif %}
+                {% endif %}
+            {%endfor%}
+               
+            </div>
+
+        </div>
+    </section>
+    <!-- End Portfolio Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Contact</h2>
+                <p>Contact Me</p>
+            </div>
+
+            <div class="row mt-2">
+                {%for about in show_about%}
+                <div class="col-md-6 d-flex align-items-stretch">
+                    <div class="info-box">
+                        <i class="bx bx-map"></i>
+                        <h3>My Address</h3>
+                        <p>{{about.address}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+                    <div class="info-box">
+                        <i class="bx bx-share-alt"></i>
+                        <h3>Social Profiles</h3>
+                        <div class="social-links">
+                            {%for social in show_social%}
+                            <a href="{{social.link}}" class="twitter"> <img src="{{social.icon.url}}"> </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            
+                {%for about in show_about%}
+                <div class="col-md-6 mt-4 d-flex align-items-stretch">
+                    <div class="info-box">
+                        <i class="bx bx-envelope"></i>
+                        <h3>Email Me</h3>
+                        <p>{{about.email}}</p>
+                    </div>
+                </div>
+                <div class="col-md-6 mt-4 d-flex align-items-stretch">
+                    <div class="info-box">
+                        <i class="bx bx-phone-call"></i>
+                        <h3>Call Me</h3>
+                        <p>{{about.phone}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            
+            {% if messages %}
+            {% for msg in messages %}
+            <p style="color:green;">{{msg}}</p>
+            {% endfor %}
+            {% endif %}
+            <form action="." method="POST" role="form" class="mt-4" novalidate>
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        {{form.name}}
+                        {% for err in form.name.errors %}
+                        <span style="color:red">{{err}}</span>
+                        {% endfor %}
+            
+                    </div>
+                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                        {{form.email}}
+                        {% for err in form.email.errors %}
+                        <span style="color:red">{{err}}</span>
+                        {% endfor %}
+                        
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    {{form.subject}}
+                        {% for err in form.subject.errors %}
+                        <span style="color:red">{{err}}</span>
+                        {% endfor %}
+                   
+                </div>
+                <div class="form-group col-md-12 mt-3">
+                    {{form.message}}
+                        {% for err in form.message.errors %}
+                        <span style="color:red">{{err}}</span>
+                        {% endfor %}
+                </div>
+               
+                <div class="text-center"><input type="submit" class="btn btn-primary" value="Send Message" style="margin-top:10px;"></div>
+            </form>
+
+        </div>
+    </section>
+    <!-- End Contact Section -->
+    <!-- Vendor JS Files -->
+    <script src="{% static 'assets/vendor/purecounter/purecounter.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/waypoints/noframework.waypoints.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
